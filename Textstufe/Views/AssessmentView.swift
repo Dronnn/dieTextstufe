@@ -15,14 +15,14 @@ struct AssessmentView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 19) {
             Text("assessment.title")
-                .font(.system(.title2, design: .serif, weight: .bold))
+                .font(.system(.title2, design: .rounded, weight: .bold))
                 .foregroundStyle(.primary)
 
             if let level = assessment.level {
                 CEFRBands(level: level)
 
                 Text(String(format: String(localized: "assessment.approximate"), level.rawValue))
-                    .font(.system(.largeTitle, design: .serif, weight: .bold))
+                    .font(.system(.largeTitle, design: .rounded, weight: .bold))
                     .foregroundStyle(Theme.ink)
 
                 if let alternate = assessment.alternateLevel {
@@ -92,7 +92,7 @@ struct AssessmentView: View {
                     .foregroundStyle(Theme.mutedGold)
                     .accessibilityHidden(true)
                 Text(messageTitle)
-                    .font(.system(.title3, design: .serif, weight: .semibold))
+                    .font(.system(.title3, design: .rounded, weight: .semibold))
                 Text(messageDetail)
                     .foregroundStyle(.secondary)
                     .font(.subheadline)

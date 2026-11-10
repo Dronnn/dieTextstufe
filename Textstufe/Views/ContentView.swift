@@ -54,9 +54,15 @@ struct ContentView: View {
         VStack(alignment: .leading, spacing: 18) {
             HStack(alignment: .firstTextBaseline) {
                 Text(verbatim: "Textstufe")
-                    .font(.system(size: 32, weight: .bold, design: .serif))
+                    .font(.system(size: 32, weight: .bold, design: .rounded))
                     .foregroundStyle(Theme.ink)
                 Spacer()
+                Button { activeSheet = .support } label: {
+                    Image(systemName: "heart.circle")
+                        .font(.title3)
+                        .accessibilityLabel(Text("support.button"))
+                }
+                .padding(.trailing, 10)
                 Button { activeSheet = .about } label: {
                     Image(systemName: "info.circle")
                         .font(.title3)
@@ -65,7 +71,7 @@ struct ContentView: View {
             }
             VStack(alignment: .leading, spacing: 7) {
                 Text("header.question")
-                    .font(.system(.largeTitle, design: .serif, weight: .bold))
+                    .font(.system(.largeTitle, design: .rounded, weight: .bold))
                     .fixedSize(horizontal: false, vertical: true)
                 Text("header.subtitle")
                     .font(.subheadline)
@@ -78,7 +84,7 @@ struct ContentView: View {
         VStack(alignment: .leading, spacing: 13) {
             HStack(alignment: .firstTextBaseline) {
                 Text("editor.title")
-                    .font(.system(.title3, design: .serif, weight: .bold))
+                    .font(.system(.title3, design: .rounded, weight: .bold))
                 Spacer()
                 Button("editor.example") { loadExample() }
                     .font(.subheadline.weight(.semibold))
@@ -142,7 +148,7 @@ struct ContentView: View {
     private var emptyState: some View {
         VStack(alignment: .leading, spacing: 9) {
             Text("empty.title")
-                .font(.system(.title2, design: .serif, weight: .bold))
+                .font(.system(.title2, design: .rounded, weight: .bold))
             Text("empty.detail")
                 .font(.subheadline)
                 .foregroundStyle(.secondary)
@@ -156,7 +162,7 @@ struct ContentView: View {
         VStack(alignment: .leading, spacing: 10) {
             Divider()
             Text("explanation.title")
-                .font(.system(.title3, design: .serif, weight: .bold))
+                .font(.system(.title3, design: .rounded, weight: .bold))
             Text("explanation.body")
                 .font(.subheadline)
                 .foregroundStyle(.secondary)

@@ -10,9 +10,9 @@ project.mkdir(exist_ok=True)
 files = {
     'App': ['TextstufeApp.swift', 'Theme.swift', 'SampleTexts.swift'],
     'Core': ['AssessmentModels.swift', 'DonationTiers.swift', 'GermanLemma.swift', 'GermanLemmaData.swift', 'ReadingScorer.swift', 'ZixModelData.swift'],
-    'Resources': ['Localizable.xcstrings'],
+    'Resources': ['Localizable.xcstrings', 'LaunchScreen.storyboard', 'THIRD_PARTY_NOTICES.md'],
     'Services': ['GermanTextAnalyzer.swift', 'DonationStore.swift'],
-    'Views': ['ContentView.swift', 'AssessmentView.swift', 'AboutView.swift', 'SupportView.swift'],
+    'Views': ['ContentView.swift', 'AssessmentView.swift', 'AboutView.swift', 'SupportView.swift', 'LicensesView.swift'],
 }
 
 def uid(tag):
@@ -31,7 +31,14 @@ bfile = []
 for folder, names in files.items():
     for name in names:
         key = f'{folder}/{name}'
-        file_type = 'text.json.xcstrings' if name.endswith('.xcstrings') else 'sourcecode.swift'
+        if name.endswith('.xcstrings'):
+            file_type = 'text.json.xcstrings'
+        elif name.endswith('.storyboard'):
+            file_type = 'file.storyboard'
+        elif name.endswith('.md'):
+            file_type = 'net.daringfireball.markdown'
+        else:
+            file_type = 'sourcecode.swift'
         pfile.append(block('ref:'+key, name,
             '\t\t\tisa = PBXFileReference;\n'
             f'\t\t\tlastKnownFileType = {file_type};\n'
@@ -144,7 +151,7 @@ for scope in ['project','target']:
 \t\t\tINFOPLIST_KEY_CFBundleDisplayName = Textstufe;
 \t\t\tINFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 \t\t\tINFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
-\t\t\tINFOPLIST_KEY_UILaunchScreen_Generation = YES;
+\t\t\tINFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 \t\t\tIPHONEOS_DEPLOYMENT_TARGET = 17.0;
 \t\t\tMARKETING_VERSION = 0.1.0;
 \t\t\tPRODUCT_BUNDLE_IDENTIFIER = com.mrmaier.textstufe;

@@ -60,7 +60,7 @@ struct SupportView: View {
     private var donationContent: some View {
         VStack(alignment: .leading, spacing: 18) {
             Text("donations.headline")
-                .font(.system(size: 32, weight: .bold, design: .serif))
+                .font(.system(size: 32, weight: .bold, design: .rounded))
                 .foregroundStyle(Theme.ink)
                 .fixedSize(horizontal: false, vertical: true)
 
@@ -138,7 +138,7 @@ struct SupportView: View {
                 .accessibilityHidden(true)
 
             Text("donations.thankYou.title")
-                .font(.system(size: 34, weight: .bold, design: .serif))
+                .font(.system(size: 34, weight: .bold, design: .rounded))
                 .foregroundStyle(Theme.ink)
 
             Text("donations.thankYou.body")

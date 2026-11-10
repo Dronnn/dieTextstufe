@@ -3,6 +3,7 @@ import SwiftUI
 struct AboutView: View {
     @Environment(\.dismiss) private var dismiss
     @State private var showingSupport = false
+    @State private var showingLicenses = false
 
     var body: some View {
         NavigationStack {
@@ -22,6 +23,13 @@ struct AboutView: View {
                     .font(.subheadline.weight(.semibold))
                     .buttonStyle(.bordered)
                     .padding(.top, 6)
+
+                    Button("about.licenses") {
+                        showingLicenses = true
+                    }
+                    .font(.subheadline.weight(.semibold))
+                    .buttonStyle(.plain)
+                    .frame(minHeight: 44)
                 }
                 .padding(22)
                 .frame(maxWidth: 720, alignment: .leading)
@@ -37,6 +45,9 @@ struct AboutView: View {
             }
             .sheet(isPresented: $showingSupport) {
                 SupportView()
+            }
+            .sheet(isPresented: $showingLicenses) {
+                LicensesView()
             }
         }
     }

@@ -13,6 +13,8 @@ Offline German reading-difficulty estimator for iPhone and iPad. Paste a German 
 - Uncertainty band: results close to a level boundary show the neighbouring level as well.
 - Interface localized to the device language; English is the default.
 - Optional consumable tips through StoreKit 2. Donations unlock nothing.
+- Rounded SF Pro typography and a branded launch screen.
+- In-app open-source license notices.
 
 ## Interface languages
 

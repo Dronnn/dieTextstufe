@@ -46,6 +46,14 @@
 			isa = PBXBuildFile;
 			fileRef = 5F5F8B643FEB68425C81F697 /* Localizable.xcstrings */;
 		};
+		33D161384324A14BFCC0D259 /* LaunchScreen.storyboard in Resources */ = {
+			isa = PBXBuildFile;
+			fileRef = B6BA260BD3911FA496415257 /* LaunchScreen.storyboard */;
+		};
+		4AF2CD65A47763D925645C52 /* THIRD_PARTY_NOTICES.md in Resources */ = {
+			isa = PBXBuildFile;
+			fileRef = BEAFFAF1C861ED1E453E1C66 /* THIRD_PARTY_NOTICES.md */;
+		};
 		F5E5E60DCF0C618F519FDF4A /* GermanTextAnalyzer.swift in Sources */ = {
 			isa = PBXBuildFile;
 			fileRef = 0C7AF6D13F35FA98DE166465 /* GermanTextAnalyzer.swift */;
@@ -69,6 +77,10 @@
 		73E670BE74FBE4AE64136303 /* SupportView.swift in Sources */ = {
 			isa = PBXBuildFile;
 			fileRef = A02D42674823395343A1F2F1 /* SupportView.swift */;
+		};
+		9E3A7095EECE0C6ACA6C938E /* LicensesView.swift in Sources */ = {
+			isa = PBXBuildFile;
+			fileRef = 0343FA0E217CF793E0C86B72 /* LicensesView.swift */;
 		};
 		78B66FF0B66DC2AB70DB9E3E /* Assets.xcassets in Resources */ = {
 			isa = PBXBuildFile;
@@ -137,6 +149,18 @@
 			path = Localizable.xcstrings;
 			sourceTree = "<group>";
 		};
+		B6BA260BD3911FA496415257 /* LaunchScreen.storyboard */ = {
+			isa = PBXFileReference;
+			lastKnownFileType = file.storyboard;
+			path = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		BEAFFAF1C861ED1E453E1C66 /* THIRD_PARTY_NOTICES.md */ = {
+			isa = PBXFileReference;
+			lastKnownFileType = net.daringfireball.markdown;
+			path = THIRD_PARTY_NOTICES.md;
+			sourceTree = "<group>";
+		};
 		0C7AF6D13F35FA98DE166465 /* GermanTextAnalyzer.swift */ = {
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.swift;
@@ -171,6 +195,12 @@
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.swift;
 			path = SupportView.swift;
+			sourceTree = "<group>";
+		};
+		0343FA0E217CF793E0C86B72 /* LicensesView.swift */ = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.swift;
+			path = LicensesView.swift;
 			sourceTree = "<group>";
 		};
 		2C9C1A689E0156953F32010C /* Assets.xcassets */ = {
@@ -225,6 +255,8 @@
 			isa = PBXGroup;
 			children = (
 				5F5F8B643FEB68425C81F697 /* Localizable.xcstrings */,
+				B6BA260BD3911FA496415257 /* LaunchScreen.storyboard */,
+				BEAFFAF1C861ED1E453E1C66 /* THIRD_PARTY_NOTICES.md */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -245,6 +277,7 @@
 				033CE99D4109A24C0E8D256A /* AssessmentView.swift */,
 				92C06C878C94D613386E7F44 /* AboutView.swift */,
 				A02D42674823395343A1F2F1 /* SupportView.swift */,
+				0343FA0E217CF793E0C86B72 /* LicensesView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -324,6 +357,8 @@
 			files = (
 				78B66FF0B66DC2AB70DB9E3E /* Assets.xcassets in Resources */,
 				6D4FDFA6EE22196815CFEFAE /* Localizable.xcstrings in Resources */,
+				33D161384324A14BFCC0D259 /* LaunchScreen.storyboard in Resources */,
+				4AF2CD65A47763D925645C52 /* THIRD_PARTY_NOTICES.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -349,6 +384,7 @@
 				BE1D4570C96ACA5D77239106 /* AssessmentView.swift in Sources */,
 				4DA7DC97C7BF2139F10EC41F /* AboutView.swift in Sources */,
 				73E670BE74FBE4AE64136303 /* SupportView.swift in Sources */,
+				9E3A7095EECE0C6ACA6C938E /* LicensesView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -398,7 +434,7 @@
 				INFOPLIST_KEY_CFBundleDisplayName = Textstufe;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MARKETING_VERSION = 0.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mrmaier.textstufe;
@@ -421,7 +457,7 @@
 				INFOPLIST_KEY_CFBundleDisplayName = Textstufe;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MARKETING_VERSION = 0.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mrmaier.textstufe;
