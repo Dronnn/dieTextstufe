@@ -48,7 +48,10 @@ struct ContentView: View {
             .scrollDismissesKeyboard(.interactively)
             #if DEBUG
             .onChange(of: assessment) { _, newValue in
-                guard newValue != nil, let demo = ProcessInfo.processInfo.environment["TEXTSTUFE_DEMO"] else { return }
+                guard newValue != nil,
+                      let demo = ProcessInfo.processInfo.environment["TEXTSTUFE_DEMO"],
+                      demo == "detail" || demo == "detail-bottom"
+                else { return }
                 let anchor: UnitPoint = demo == "detail-bottom" ? .bottom : .top
                 Task { @MainActor in
                     try? await Task.sleep(for: .milliseconds(350))
@@ -79,6 +82,9 @@ struct ContentView: View {
         case "detail", "detail-bottom", "marketing":
             input = SampleTexts.german
             marketingShot = true
+            analyze()
+        case "analyzed":
+            input = SampleTexts.german
             analyze()
         case "compose":
             input = SampleTexts.german
