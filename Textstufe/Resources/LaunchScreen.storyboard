@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Launch Screen-->
         <scene sceneID="EHf-IW-A2E">
             <objects>
                 <viewController id="01J-lp-oVM" sceneMemberID="viewController">
@@ -17,17 +17,35 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Textstufe" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5Dx-8H-4iJ">
-                                <rect key="frame" x="123" y="402.66666666666669" width="147" height="46.666666666666686"/>
-                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="39"/>
-                                <color key="textColor" red="0.14682554580807469" green="0.32423376470940851" blue="0.35519351907398389" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <rect key="frame" x="100" y="378" width="193" height="52"/>
+                                <fontDescription key="fontDescription" name="SFProRounded-Semibold" family="SF Pro Rounded" pointSize="44"/>
+                                <color key="textColor" red="0.97647058823529409" green="0.97647058823529409" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Qm-2k-7pL">
+                                <rect key="frame" x="168.5" y="444" width="56" height="3"/>
+                                <color key="backgroundColor" red="0.74901960784313726" green="0.84313725490196079" blue="0.78039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="56" id="8cV-1q-Yb4"/>
+                                    <constraint firstAttribute="height" constant="3" id="3Pw-6z-8fD"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DEUTSCHES TEXTNIVEAU" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="J4n-9r-2xT">
+                                <rect key="frame" x="108.5" y="461" width="176" height="16"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
+                                <color key="textColor" red="0.97647058823529409" green="0.97647058823529409" blue="0.94901960784313721" alpha="0.62" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
+                        <color key="backgroundColor" red="0.090196078431372548" green="0.32941176470588235" blue="0.27058823529411763" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="5Dx-8H-4iJ" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="0n1-8L-y1K"/>
-                            <constraint firstItem="5Dx-8H-4iJ" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="4Hh-2v-8dT"/>
+                            <constraint firstItem="5Dx-8H-4iJ" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" constant="-40" id="4Hh-2v-8dT"/>
+                            <constraint firstItem="8Qm-2k-7pL" firstAttribute="top" secondItem="5Dx-8H-4iJ" secondAttribute="bottom" constant="14" id="7kL-3m-Q2v"/>
+                            <constraint firstItem="8Qm-2k-7pL" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="9rT-4n-W8s"/>
+                            <constraint firstItem="J4n-9r-2xT" firstAttribute="top" secondItem="8Qm-2k-7pL" secondAttribute="bottom" constant="14" id="2vB-6c-X1d"/>
+                            <constraint firstItem="J4n-9r-2xT" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="5hF-8p-Z3a"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -36,9 +54,4 @@
             <point key="canvasLocation" x="53" y="375"/>
         </scene>
     </scenes>
-    <resources>
-        <systemColor name="systemGroupedBackgroundColor">
-            <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-    </resources>
 </document>
