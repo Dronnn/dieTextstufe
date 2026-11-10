@@ -2,34 +2,46 @@ import SwiftUI
 
 struct AboutView: View {
     @Environment(\.dismiss) private var dismiss
+    @State private var showingSupport = false
 
     var body: some View {
         NavigationStack {
             ScrollView {
                 VStack(alignment: .leading, spacing: 18) {
-                    section("100 % offline", "Die Texte werden ausschließlich auf deinem Gerät verarbeitet. Die App verwendet keine Netzwerkverbindung, keine Benutzerkonten und keine Analyse-Server. Eingaben werden nicht dauerhaft gespeichert.")
-                    section("Wie wird bewertet?", "Apples NaturalLanguage-Framework erkennt Wörter, Sätze, mögliche Grundformen und die Sprache. Ein einfacher, lokal berechneter Bewertungsalgorithmus betrachtet häufige Wörter, die Länge der Sätze und längere Wörter.")
-                    section("Wie zuverlässig ist das?", "Die Einstufung ist eine grobe Orientierung, kein wissenschaftlich validierter Test und keine offizielle GER-Bewertung. Besonders Fachtexte, Eigennamen und ungewöhnliche Formulierungen können das Ergebnis verfälschen.")
-                    section("Warum mindestens 50 Wörter?", "Ein einzelnes Wort wie „Hallo“ sagt praktisch nichts über die Schwierigkeit eines Textes aus. Deshalb vergibt Textstufe erst ab 50 Wörtern in mindestens drei Sätzen eine Stufe.")
-                    section("ZIX und diese App", "Textstufe verwendet eine eigene Swift-Heuristik, nicht das originale Zürcher ZIX-Modell. Ein exakter ZIX-Nachbau würde unter anderem die originalen Trainingsparameter und vergleichbare Wortgrundformen benötigen.")
-                    section("Datenschutz", "Die App sendet keine Texte an Dritte. Über die Schaltfläche „Ergebnis kopieren“ kannst du eine Zusammenfassung selbst in die Zwischenablage übernehmen.")
+                    section("about.offline.title", "about.offline.body")
+                    section("about.method.title", "about.method.body")
+                    section("about.reliability.title", "about.reliability.body")
+                    section("about.minimum.title", "about.minimum.body")
+                    section("about.zix.title", "about.zix.body")
+                    section("about.privacy.title", "about.privacy.body")
+                    Button {
+                        showingSupport = true
+                    } label: {
+                        Label("support.button", systemImage: "heart")
+                    }
+                    .font(.subheadline.weight(.semibold))
+                    .buttonStyle(.bordered)
+                    .padding(.top, 6)
                 }
                 .padding(22)
                 .frame(maxWidth: 720, alignment: .leading)
                 .frame(maxWidth: .infinity)
             }
             .background(Theme.canvas)
-            .navigationTitle("Über Textstufe")
+            .navigationTitle("about.title")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
-                    Button("Fertig") { dismiss() }
+                    Button("about.done") { dismiss() }
                 }
+            }
+            .sheet(isPresented: $showingSupport) {
+                SupportView()
             }
         }
     }
 
-    private func section(_ title: String, _ text: String) -> some View {
+    private func section(_ title: LocalizedStringKey, _ text: LocalizedStringKey) -> some View {
         VStack(alignment: .leading, spacing: 7) {
             Text(title).font(.headline)
             Text(text)
@@ -38,4 +50,8 @@ struct AboutView: View {
                 .fixedSize(horizontal: false, vertical: true)
         }
     }
+}
+
+#Preview {
+    AboutView()
 }

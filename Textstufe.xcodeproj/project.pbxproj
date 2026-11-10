@@ -22,17 +22,37 @@
 			isa = PBXBuildFile;
 			fileRef = 089E8347CBA469F2FFCE624A /* AssessmentModels.swift */;
 		};
-		EF90C44E85112A0FAA81329D /* GermanLexicon.swift in Sources */ = {
+		A25056C4222B099D51E36B1E /* DonationTiers.swift in Sources */ = {
 			isa = PBXBuildFile;
-			fileRef = A2060DCF10D56D01DE30A65E /* GermanLexicon.swift */;
+			fileRef = 71C53F5F4047324E7E90DA09 /* DonationTiers.swift */;
+		};
+		4D1FCE31F682ECC308869993 /* GermanLemma.swift in Sources */ = {
+			isa = PBXBuildFile;
+			fileRef = 90ACDDD387FD95076FB88B87 /* GermanLemma.swift */;
+		};
+		BBC2CEAA08467DCF1CE023A5 /* GermanLemmaData.swift in Sources */ = {
+			isa = PBXBuildFile;
+			fileRef = F256360816BA8AA52633F897 /* GermanLemmaData.swift */;
 		};
 		C3C529514B96DF0B1236FDF0 /* ReadingScorer.swift in Sources */ = {
 			isa = PBXBuildFile;
 			fileRef = 5D20840814A465EF324EEB3A /* ReadingScorer.swift */;
 		};
+		13D08E871A1D1E858864F85B /* ZixModelData.swift in Sources */ = {
+			isa = PBXBuildFile;
+			fileRef = FBCB06A4EEAD711BBE0BDBCD /* ZixModelData.swift */;
+		};
+		6D4FDFA6EE22196815CFEFAE /* Localizable.xcstrings in Resources */ = {
+			isa = PBXBuildFile;
+			fileRef = 5F5F8B643FEB68425C81F697 /* Localizable.xcstrings */;
+		};
 		F5E5E60DCF0C618F519FDF4A /* GermanTextAnalyzer.swift in Sources */ = {
 			isa = PBXBuildFile;
 			fileRef = 0C7AF6D13F35FA98DE166465 /* GermanTextAnalyzer.swift */;
+		};
+		CFEF243D0301C604D4FBEDFF /* DonationStore.swift in Sources */ = {
+			isa = PBXBuildFile;
+			fileRef = E2DF06B67416AC6A09FF4F4F /* DonationStore.swift */;
 		};
 		451EAF488E7AA7DB0E4FDE20 /* ContentView.swift in Sources */ = {
 			isa = PBXBuildFile;
@@ -45,6 +65,10 @@
 		4DA7DC97C7BF2139F10EC41F /* AboutView.swift in Sources */ = {
 			isa = PBXBuildFile;
 			fileRef = 92C06C878C94D613386E7F44 /* AboutView.swift */;
+		};
+		73E670BE74FBE4AE64136303 /* SupportView.swift in Sources */ = {
+			isa = PBXBuildFile;
+			fileRef = A02D42674823395343A1F2F1 /* SupportView.swift */;
 		};
 		78B66FF0B66DC2AB70DB9E3E /* Assets.xcassets in Resources */ = {
 			isa = PBXBuildFile;
@@ -77,10 +101,22 @@
 			path = AssessmentModels.swift;
 			sourceTree = "<group>";
 		};
-		A2060DCF10D56D01DE30A65E /* GermanLexicon.swift */ = {
+		71C53F5F4047324E7E90DA09 /* DonationTiers.swift */ = {
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.swift;
-			path = GermanLexicon.swift;
+			path = DonationTiers.swift;
+			sourceTree = "<group>";
+		};
+		90ACDDD387FD95076FB88B87 /* GermanLemma.swift */ = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.swift;
+			path = GermanLemma.swift;
+			sourceTree = "<group>";
+		};
+		F256360816BA8AA52633F897 /* GermanLemmaData.swift */ = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.swift;
+			path = GermanLemmaData.swift;
 			sourceTree = "<group>";
 		};
 		5D20840814A465EF324EEB3A /* ReadingScorer.swift */ = {
@@ -89,10 +125,28 @@
 			path = ReadingScorer.swift;
 			sourceTree = "<group>";
 		};
+		FBCB06A4EEAD711BBE0BDBCD /* ZixModelData.swift */ = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.swift;
+			path = ZixModelData.swift;
+			sourceTree = "<group>";
+		};
+		5F5F8B643FEB68425C81F697 /* Localizable.xcstrings */ = {
+			isa = PBXFileReference;
+			lastKnownFileType = text.json.xcstrings;
+			path = Localizable.xcstrings;
+			sourceTree = "<group>";
+		};
 		0C7AF6D13F35FA98DE166465 /* GermanTextAnalyzer.swift */ = {
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.swift;
 			path = GermanTextAnalyzer.swift;
+			sourceTree = "<group>";
+		};
+		E2DF06B67416AC6A09FF4F4F /* DonationStore.swift */ = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.swift;
+			path = DonationStore.swift;
 			sourceTree = "<group>";
 		};
 		B92C360B96877DD5F85D91F1 /* ContentView.swift */ = {
@@ -111,6 +165,12 @@
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.swift;
 			path = AboutView.swift;
+			sourceTree = "<group>";
+		};
+		A02D42674823395343A1F2F1 /* SupportView.swift */ = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.swift;
+			path = SupportView.swift;
 			sourceTree = "<group>";
 		};
 		2C9C1A689E0156953F32010C /* Assets.xcassets */ = {
@@ -152,16 +212,28 @@
 			isa = PBXGroup;
 			children = (
 				089E8347CBA469F2FFCE624A /* AssessmentModels.swift */,
-				A2060DCF10D56D01DE30A65E /* GermanLexicon.swift */,
+				71C53F5F4047324E7E90DA09 /* DonationTiers.swift */,
+				90ACDDD387FD95076FB88B87 /* GermanLemma.swift */,
+				F256360816BA8AA52633F897 /* GermanLemmaData.swift */,
 				5D20840814A465EF324EEB3A /* ReadingScorer.swift */,
+				FBCB06A4EEAD711BBE0BDBCD /* ZixModelData.swift */,
 			);
 			path = Core;
+			sourceTree = "<group>";
+		};
+		88A0773BC0051D2B4500A3A9 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				5F5F8B643FEB68425C81F697 /* Localizable.xcstrings */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		3AF4707B7978B38667D37263 /* Services */ = {
 			isa = PBXGroup;
 			children = (
 				0C7AF6D13F35FA98DE166465 /* GermanTextAnalyzer.swift */,
+				E2DF06B67416AC6A09FF4F4F /* DonationStore.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -172,6 +244,7 @@
 				B92C360B96877DD5F85D91F1 /* ContentView.swift */,
 				033CE99D4109A24C0E8D256A /* AssessmentView.swift */,
 				92C06C878C94D613386E7F44 /* AboutView.swift */,
+				A02D42674823395343A1F2F1 /* SupportView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -181,6 +254,7 @@
 			children = (
 				BFE0539EA15F9404C014FC1A /* App */,
 				EFBF1225805B37DEE4C296F8 /* Core */,
+				88A0773BC0051D2B4500A3A9 /* Resources */,
 				3AF4707B7978B38667D37263 /* Services */,
 				E71BA6E82D6BE46176E3E747 /* Views */,
 				2C9C1A689E0156953F32010C /* Assets.xcassets */,
@@ -232,9 +306,9 @@
 			};
 			buildConfigurationList = 75F4208181DA19FC7F549CC6 /* Build configuration list for PBXProject */;
 			compatibilityVersion = "Xcode 14.0";
-			developmentRegion = de;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
-			knownRegions = (de, en, Base);
+			knownRegions = (en, de, fr, es, it, pl, ru, uk, ja, "zh-Hans", pt, tr, Base);
 			mainGroup = 96B4A92792011A0C822A8E2F /* Project */;
 			productRefGroup = C3E32D27BBA9EBBEB418C35E /* Products */;
 			projectDirPath = "";
@@ -249,6 +323,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				78B66FF0B66DC2AB70DB9E3E /* Assets.xcassets in Resources */,
+				6D4FDFA6EE22196815CFEFAE /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -263,12 +338,17 @@
 				222B4679B0A63FB7F755E1B3 /* Theme.swift in Sources */,
 				83DACE4541ADDCD0C0EC066B /* SampleTexts.swift in Sources */,
 				4EF881274498ED8FA5B370FE /* AssessmentModels.swift in Sources */,
-				EF90C44E85112A0FAA81329D /* GermanLexicon.swift in Sources */,
+				A25056C4222B099D51E36B1E /* DonationTiers.swift in Sources */,
+				4D1FCE31F682ECC308869993 /* GermanLemma.swift in Sources */,
+				BBC2CEAA08467DCF1CE023A5 /* GermanLemmaData.swift in Sources */,
 				C3C529514B96DF0B1236FDF0 /* ReadingScorer.swift in Sources */,
+				13D08E871A1D1E858864F85B /* ZixModelData.swift in Sources */,
 				F5E5E60DCF0C618F519FDF4A /* GermanTextAnalyzer.swift in Sources */,
+				CFEF243D0301C604D4FBEDFF /* DonationStore.swift in Sources */,
 				451EAF488E7AA7DB0E4FDE20 /* ContentView.swift in Sources */,
 				BE1D4570C96ACA5D77239106 /* AssessmentView.swift in Sources */,
 				4DA7DC97C7BF2139F10EC41F /* AboutView.swift in Sources */,
+				73E670BE74FBE4AE64136303 /* SupportView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -288,6 +368,7 @@
 				SWIFT_VERSION = 5.0;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 			};
 			name = Debug;
 		};
@@ -320,7 +401,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MARKETING_VERSION = 0.1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.textstufe;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mrmaier.textstufe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -343,7 +424,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MARKETING_VERSION = 0.1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.textstufe;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mrmaier.textstufe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SWIFT_EMIT_LOC_STRINGS = YES;

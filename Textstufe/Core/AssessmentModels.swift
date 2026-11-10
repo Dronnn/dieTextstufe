@@ -45,26 +45,69 @@ struct TextFeatures: Sendable, Equatable {
     }
 }
 
+/// Explanations shown below a result. The raw value is the localization key.
+enum AssessmentInsight: String, CaseIterable, Sendable {
+    case longSentences
+    case shortSentences
+    case manyLongWords
+    case limitedVocabulary
+    case commonVocabulary
+    case mixedStructure
+
+    var localizationKey: String { "insight.\(rawValue)" }
+}
+
+/// The six features used by the ZIX regression, in model order.
+struct ZixFeatureVector: Sendable, Equatable {
+    let sentenceLengthMean: Double
+    let rix: Double
+    let vocabularyA1: Double
+    let vocabularyA2: Double
+    let vocabularyB1: Double
+    let commonWordScore: Double
+
+    var values: [Double] {
+        [sentenceLengthMean, rix, vocabularyA1, vocabularyA2, vocabularyB1, commonWordScore]
+    }
+}
+
 struct Assessment: Sendable, Equatable {
     let state: AssessmentState
     let level: CEFRLevel?
-    let numericScore: Double?
+    /// The neighbouring level when the score sits close to a band boundary.
+    let alternateLevel: CEFRLevel?
+    /// ZIX understandability score, -10 (hard) to +10 (easy).
+    let zixScore: Double?
     let wordCount: Int
     let sentenceCount: Int
-    let averageSentenceLength: Double
+    let wordsPerSentence: Double
     let longWordShare: Double
-    let knownWordShare: Double
-    let indicators: [String]
+    /// Share of words found in the A1–B1 reference vocabulary (B1 is the broadest list).
+    let vocabularyCoverage: Double
+    let commonWordScore: Double
+    let insights: [AssessmentInsight]
     let challengingWords: [String]
+    let features: ZixFeatureVector?
+
+    var isUncertain: Bool { alternateLevel != nil }
 
     static func placeholder(state: AssessmentState, features: TextFeatures) -> Assessment {
         let count = features.words.count
         let sentences = features.sentenceWordCounts.filter { $0 > 0 }.count
         return Assessment(
-            state: state, level: nil, numericScore: nil,
-            wordCount: count, sentenceCount: sentences,
-            averageSentenceLength: sentences > 0 ? Double(count) / Double(sentences) : 0,
-            longWordShare: 0, knownWordShare: 0, indicators: [], challengingWords: []
+            state: state,
+            level: nil,
+            alternateLevel: nil,
+            zixScore: nil,
+            wordCount: count,
+            sentenceCount: sentences,
+            wordsPerSentence: sentences > 0 ? Double(count) / Double(sentences) : 0,
+            longWordShare: 0,
+            vocabularyCoverage: 0,
+            commonWordScore: 0,
+            insights: [],
+            challengingWords: [],
+            features: nil
         )
     }
 }

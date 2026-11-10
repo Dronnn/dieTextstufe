@@ -4,10 +4,16 @@ struct ContentView: View {
     @State private var input = ""
     @State private var assessment: Assessment?
     @State private var isAnalyzing = false
-    @State private var showingInfo = false
+    @State private var activeSheet: Sheet?
     @FocusState private var inputFocused: Bool
 
     private let maxCharacters = 20_000
+
+    private enum Sheet: String, Identifiable {
+        case about
+        case support
+        var id: String { rawValue }
+    }
 
     var body: some View {
         NavigationStack {
@@ -15,28 +21,14 @@ struct ContentView: View {
                 VStack(alignment: .leading, spacing: 26) {
                     header
                     editor
-                    Button(action: analyze) {
-                        HStack(spacing: 10) {
-                            if isAnalyzing { ProgressView().tint(.white) }
-                            else { Image(systemName: "text.magnifyingglass") }
-                            Text(isAnalyzing ? "Text wird analysiert …" : "Text analysieren")
-                                .font(.headline)
-                        }
-                        .frame(maxWidth: .infinity)
-                        .frame(minHeight: 50)
-                    }
-                    .buttonStyle(.plain)
-                    .foregroundStyle(.white)
-                    .background(Theme.forest, in: RoundedRectangle(cornerRadius: 13))
-                    .disabled(isAnalyzing || input.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
-                    .opacity((isAnalyzing || input.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty) ? 0.55 : 1)
-
+                    analyzeButton
                     if let assessment {
                         AssessmentView(assessment: assessment)
                     } else {
                         emptyState
                     }
                     explanation
+                    supportButton
                 }
                 .frame(maxWidth: 720, alignment: .leading)
                 .padding(.horizontal, 20)
@@ -47,9 +39,13 @@ struct ContentView: View {
             .scrollDismissesKeyboard(.interactively)
             .background(Theme.canvas)
             .toolbar(.hidden, for: .navigationBar)
-            .sheet(isPresented: $showingInfo) {
-                AboutView()
-                    .environment(\.locale, Locale(identifier: "de_DE"))
+            .sheet(item: $activeSheet) { sheet in
+                switch sheet {
+                case .about:
+                    AboutView()
+                case .support:
+                    SupportView()
+                }
             }
         }
     }
@@ -57,21 +53,21 @@ struct ContentView: View {
     private var header: some View {
         VStack(alignment: .leading, spacing: 18) {
             HStack(alignment: .firstTextBaseline) {
-                Text("Textstufe")
+                Text(verbatim: "Textstufe")
                     .font(.system(size: 32, weight: .bold, design: .serif))
                     .foregroundStyle(Theme.ink)
                 Spacer()
-                Button { showingInfo = true } label: {
+                Button { activeSheet = .about } label: {
                     Image(systemName: "info.circle")
                         .font(.title3)
-                        .accessibilityLabel("Über die Einschätzung")
+                        .accessibilityLabel(Text("header.info"))
                 }
             }
             VStack(alignment: .leading, spacing: 7) {
-                Text("Wie schwer ist dein Text?")
+                Text("header.question")
                     .font(.system(.largeTitle, design: .serif, weight: .bold))
                     .fixedSize(horizontal: false, vertical: true)
-                Text("Deutsche Lesetexte offline einschätzen.")
+                Text("header.subtitle")
                     .font(.subheadline)
                     .foregroundStyle(.secondary)
             }
@@ -81,12 +77,12 @@ struct ContentView: View {
     private var editor: some View {
         VStack(alignment: .leading, spacing: 13) {
             HStack(alignment: .firstTextBaseline) {
-                Text("Dein deutscher Text")
+                Text("editor.title")
                     .font(.system(.title3, design: .serif, weight: .bold))
                 Spacer()
-                Button("Beispiel") { loadExample() }
+                Button("editor.example") { loadExample() }
                     .font(.subheadline.weight(.semibold))
-                Button("Leeren") { clear() }
+                Button("editor.clear") { clear() }
                     .font(.subheadline)
                     .disabled(input.isEmpty)
             }
@@ -96,7 +92,7 @@ struct ContentView: View {
                 RoundedRectangle(cornerRadius: 14)
                     .strokeBorder(inputFocused ? Theme.forest : Theme.separator, lineWidth: inputFocused ? 2 : 1)
                 if input.isEmpty {
-                    Text("Füge hier einen deutschen Text ein …")
+                    Text("editor.placeholder")
                         .foregroundStyle(.tertiary)
                         .padding(.horizontal, 16)
                         .padding(.vertical, 17)
@@ -108,7 +104,7 @@ struct ContentView: View {
                     .scrollContentBackground(.hidden)
                     .padding(11)
                     .focused($inputFocused)
-                    .accessibilityLabel("Deutscher Text")
+                    .accessibilityLabel(Text("editor.accessibility"))
             }
             .frame(height: 230)
             .onChange(of: input) { _, newValue in
@@ -116,20 +112,38 @@ struct ContentView: View {
                 assessment = nil
             }
             HStack(alignment: .firstTextBaseline) {
-                Text("\(input.count.formatted()) / \(maxCharacters.formatted()) Zeichen")
+                Text(String(format: String(localized: "editor.counter"), input.count.formatted(), maxCharacters.formatted()))
                 Spacer()
-                Text("Mindestens 50 Wörter und 3 Sätze")
+                Text("editor.minimum")
             }
             .font(.caption)
             .foregroundStyle(.secondary)
         }
     }
 
+    private var analyzeButton: some View {
+        Button(action: analyze) {
+            HStack(spacing: 10) {
+                if isAnalyzing { ProgressView().tint(.white) }
+                else { Image(systemName: "text.magnifyingglass") }
+                Text(isAnalyzing ? "action.analyzing" : "action.analyze")
+                    .font(.headline)
+            }
+            .frame(maxWidth: .infinity)
+            .frame(minHeight: 50)
+        }
+        .buttonStyle(.plain)
+        .foregroundStyle(.white)
+        .background(Theme.forest, in: RoundedRectangle(cornerRadius: 13))
+        .disabled(isAnalyzing || input.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
+        .opacity((isAnalyzing || input.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty) ? 0.55 : 1)
+    }
+
     private var emptyState: some View {
         VStack(alignment: .leading, spacing: 9) {
-            Text("Bereit, wenn du es bist.")
+            Text("empty.title")
                 .font(.system(.title2, design: .serif, weight: .bold))
-            Text("Gib mehrere vollständige Sätze ein und starte die Analyse. Die App benötigt keine Internetverbindung.")
+            Text("empty.detail")
                 .font(.subheadline)
                 .foregroundStyle(.secondary)
         }
@@ -141,14 +155,22 @@ struct ContentView: View {
     private var explanation: some View {
         VStack(alignment: .leading, spacing: 10) {
             Divider()
-            Text("Was sagt das Ergebnis aus?")
+            Text("explanation.title")
                 .font(.system(.title3, design: .serif, weight: .bold))
-            Text("Das Niveau beschreibt nur die grobe Leseschwierigkeit. Die Auswertung berücksichtigt Wortschatz, Wortlängen und Satzlängen. Sie misst nicht deine persönliche Sprachkompetenz und ist keine GER-Zertifizierung.")
+            Text("explanation.body")
                 .font(.subheadline)
                 .foregroundStyle(.secondary)
-            Button("Methode und Datenschutz") { showingInfo = true }
+            Button("explanation.method") { activeSheet = .about }
                 .font(.subheadline.weight(.semibold))
         }
+    }
+
+    private var supportButton: some View {
+        Button { activeSheet = .support } label: {
+            Label("support.button", systemImage: "heart")
+        }
+        .font(.subheadline.weight(.semibold))
+        .buttonStyle(.bordered)
     }
 
     private func analyze() {
@@ -181,5 +203,4 @@ struct ContentView: View {
 
 #Preview {
     ContentView()
-        .environment(\.locale, Locale(identifier: "de_DE"))
 }

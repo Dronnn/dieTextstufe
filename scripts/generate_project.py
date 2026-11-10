@@ -9,9 +9,10 @@ project.mkdir(exist_ok=True)
 
 files = {
     'App': ['TextstufeApp.swift', 'Theme.swift', 'SampleTexts.swift'],
-    'Core': ['AssessmentModels.swift', 'GermanLexicon.swift', 'ReadingScorer.swift'],
-    'Services': ['GermanTextAnalyzer.swift'],
-    'Views': ['ContentView.swift', 'AssessmentView.swift', 'AboutView.swift'],
+    'Core': ['AssessmentModels.swift', 'DonationTiers.swift', 'GermanLemma.swift', 'GermanLemmaData.swift', 'ReadingScorer.swift', 'ZixModelData.swift'],
+    'Resources': ['Localizable.xcstrings'],
+    'Services': ['GermanTextAnalyzer.swift', 'DonationStore.swift'],
+    'Views': ['ContentView.swift', 'AssessmentView.swift', 'AboutView.swift', 'SupportView.swift'],
 }
 
 def uid(tag):
@@ -30,14 +31,20 @@ bfile = []
 for folder, names in files.items():
     for name in names:
         key = f'{folder}/{name}'
+        file_type = 'text.json.xcstrings' if name.endswith('.xcstrings') else 'sourcecode.swift'
         pfile.append(block('ref:'+key, name,
             '\t\t\tisa = PBXFileReference;\n'
-            '\t\t\tlastKnownFileType = sourcecode.swift;\n'
+            f'\t\t\tlastKnownFileType = {file_type};\n'
             f'\t\t\tpath = {name};\n'
             '\t\t\tsourceTree = "<group>";\n'))
-        bfile.append(block('build:'+key, name+' in Sources',
-            '\t\t\tisa = PBXBuildFile;\n'
-            f'\t\t\tfileRef = {ref("ref:"+key, name)};\n'))
+        if name.endswith('.swift'):
+            bfile.append(block('build:'+key, name+' in Sources',
+                '\t\t\tisa = PBXBuildFile;\n'
+                f'\t\t\tfileRef = {ref("ref:"+key, name)};\n'))
+        else:
+            bfile.append(block('build:'+key, name+' in Resources',
+                '\t\t\tisa = PBXBuildFile;\n'
+                f'\t\t\tfileRef = {ref("ref:"+key, name)};\n'))
 pfile.append(block('ref:assets', 'Assets.xcassets',
     '\t\t\tisa = PBXFileReference;\n'
     '\t\t\tlastKnownFileType = folder.assetcatalog;\n'
@@ -75,11 +82,12 @@ groups.append(block('grp:root','Project',
 
 sources=block('phase:sources','Sources',
     '\t\t\tisa = PBXSourcesBuildPhase;\n\t\t\tbuildActionMask = 2147483647;\n\t\t\tfiles = (\n'+
-    ''.join(f'\t\t\t\t{ref("build:"+folder+"/"+name,name+" in Sources")},\n' for folder,names in files.items() for name in names)+
+    ''.join(f'\t\t\t\t{ref("build:"+folder+"/"+name,name+" in Sources")},\n' for folder,names in files.items() for name in names if name.endswith('.swift'))+
     '\t\t\t);\n\t\t\trunOnlyForDeploymentPostprocessing = 0;\n')
 resources=block('phase:resources','Resources',
     '\t\t\tisa = PBXResourcesBuildPhase;\n\t\t\tbuildActionMask = 2147483647;\n\t\t\tfiles = (\n'+
     f'\t\t\t\t{ref("build:assets","Assets.xcassets in Resources")},\n'+
+    ''.join(f'\t\t\t\t{ref("build:"+folder+"/"+name,name+" in Resources")},\n' for folder,names in files.items() for name in names if not name.endswith('.swift'))+
     '\t\t\t);\n\t\t\trunOnlyForDeploymentPostprocessing = 0;\n')
 frameworks=block('phase:frameworks','Frameworks',
     '\t\t\tisa = PBXFrameworksBuildPhase;\n\t\t\tbuildActionMask = 2147483647;\n'
@@ -105,9 +113,9 @@ proj=block('project','Project object',
     '\t\t\t};\n'
     f'\t\t\tbuildConfigurationList = {ref("cfglist:project","Build configuration list for PBXProject")};\n'
     '\t\t\tcompatibilityVersion = "Xcode 14.0";\n'
-    '\t\t\tdevelopmentRegion = de;\n'
+    '\t\t\tdevelopmentRegion = en;\n'
     '\t\t\thasScannedForEncodings = 0;\n'
-    '\t\t\tknownRegions = (de, en, Base);\n'
+    '\t\t\tknownRegions = (en, de, fr, es, it, pl, ru, uk, ja, "zh-Hans", pt, tr, Base);\n'
     f'\t\t\tmainGroup = {ref("grp:root","Project")};\n'
     f'\t\t\tproductRefGroup = {ref("grp:products","Products")};\n'
     '\t\t\tprojectDirPath = "";\n\t\t\tprojectRoot = "";\n'
@@ -126,7 +134,7 @@ for scope in ['project','target']:
 \t\t\tSDKROOT = iphoneos;
 \t\t\tSWIFT_VERSION = 5.0;
 '''
-            if mode=='Debug': config+='\t\t\tSWIFT_OPTIMIZATION_LEVEL = "-Onone";\n\t\t\tDEBUG_INFORMATION_FORMAT = dwarf;\n'
+            if mode=='Debug': config+='\t\t\tSWIFT_OPTIMIZATION_LEVEL = "-Onone";\n\t\t\tDEBUG_INFORMATION_FORMAT = dwarf;\n\t\t\tSWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;\n'
             else: config+='\t\t\tSWIFT_COMPILATION_MODE = wholemodule;\n\t\t\tSWIFT_OPTIMIZATION_LEVEL = "-O";\n'
         else:
             config='''\t\t\tASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -139,7 +147,7 @@ for scope in ['project','target']:
 \t\t\tINFOPLIST_KEY_UILaunchScreen_Generation = YES;
 \t\t\tIPHONEOS_DEPLOYMENT_TARGET = 17.0;
 \t\t\tMARKETING_VERSION = 0.1.0;
-\t\t\tPRODUCT_BUNDLE_IDENTIFIER = com.example.textstufe;
+\t\t\tPRODUCT_BUNDLE_IDENTIFIER = com.mrmaier.textstufe;
 \t\t\tPRODUCT_NAME = "$(TARGET_NAME)";
 \t\t\tSUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 \t\t\tSWIFT_EMIT_LOC_STRINGS = YES;
@@ -186,6 +194,7 @@ schemes.joinpath('Textstufe.xcscheme').write_text(f'''<?xml version="1.0" encodi
   </BuildAction>
   <LaunchAction buildConfiguration="Debug" selectedDebuggerIdentifier="Xcode.DebuggerFoundation.Debugger.LLDB" selectedLauncherIdentifier="Xcode.IDEFoundation.Launcher.PosixSpawn" launchStyle="0" useCustomWorkingDirectory="NO" ignoresPersistentStateOnLaunch="NO" debugDocumentVersioning="YES" debugServiceExtension="internal" allowLocationSimulation="YES">
     <BuildableProductRunnable runnableDebuggingMode="0"><BuildableReference BuildableIdentifier="primary" BlueprintIdentifier="{uid('target')}" BuildableName="Textstufe.app" BlueprintName="Textstufe" ReferencedContainer="container:Textstufe.xcodeproj"/></BuildableProductRunnable>
+    <StoreKitConfigurationFileReference identifier="../Configuration/Textstufe.storekit"/>
   </LaunchAction>
   <ProfileAction buildConfiguration="Release" shouldUseLaunchSchemeArgsEnv="YES" savedToolIdentifier="" useCustomWorkingDirectory="NO" debugDocumentVersioning="YES"><BuildableProductRunnable runnableDebuggingMode="0"><BuildableReference BuildableIdentifier="primary" BlueprintIdentifier="{uid('target')}" BuildableName="Textstufe.app" BlueprintName="Textstufe" ReferencedContainer="container:Textstufe.xcodeproj"/></BuildableProductRunnable></ProfileAction>
   <AnalyzeAction buildConfiguration="Debug"/>

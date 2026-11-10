@@ -8,61 +8,82 @@ struct AssessmentView: View {
         .number.precision(.fractionLength(1))
     }
 
+    private var signedScoreFormat: FloatingPointFormatStyle<Double> {
+        .number.precision(.fractionLength(1)).sign(strategy: .always())
+    }
+
     var body: some View {
         VStack(alignment: .leading, spacing: 19) {
-            Text("Deine Auswertung")
+            Text("assessment.title")
                 .font(.system(.title2, design: .serif, weight: .bold))
                 .foregroundStyle(.primary)
 
             if let level = assessment.level {
-                HStack(spacing: 3) {
-                    ForEach(CEFRLevel.allCases, id: \.self) { candidate in
-                        Text(candidate.rawValue)
-                            .font(.subheadline.weight(.semibold))
-                            .foregroundStyle(candidate == level ? Color.white : Color.primary)
-                            .frame(maxWidth: .infinity)
-                            .padding(.vertical, 10)
-                            .background(candidate == level ? Theme.forest : Theme.canvas)
-                            .clipShape(RoundedRectangle(cornerRadius: 6))
-                    }
-                }
-                Text("Ungefähr \(level.rawValue)")
+                CEFRBands(level: level)
+
+                Text(String(format: String(localized: "assessment.approximate"), level.rawValue))
                     .font(.system(.largeTitle, design: .serif, weight: .bold))
                     .foregroundStyle(Theme.ink)
-                Text("Geschätzte Leseschwierigkeit – keine offizielle GER-Prüfung.")
+
+                if let alternate = assessment.alternateLevel {
+                    Text(String(format: String(localized: "assessment.uncertain"), alternate.rawValue))
+                        .font(.subheadline)
+                        .foregroundStyle(Theme.mutedGold)
+                }
+
+                Text("assessment.disclaimer")
                     .font(.subheadline)
                     .foregroundStyle(.secondary)
+
+                if let score = assessment.zixScore {
+                    HStack(alignment: .firstTextBaseline) {
+                        Text("assessment.zix")
+                            .font(.subheadline)
+                            .foregroundStyle(.secondary)
+                        Spacer()
+                        Text(score.formatted(signedScoreFormat))
+                            .font(.title3.weight(.semibold))
+                            .monospacedDigit()
+                    }
+                    .padding(.top, 2)
+                }
 
                 Divider()
                 stats
 
-                if !assessment.indicators.isEmpty {
+                if !assessment.insights.isEmpty {
                     VStack(alignment: .leading, spacing: 8) {
-                        Text("Warum dieses Ergebnis?")
+                        Text("assessment.why")
                             .font(.headline)
-                        ForEach(assessment.indicators, id: \.self) { item in
-                            Label(item, systemImage: "circle.fill")
-                                .font(.subheadline)
-                                .labelStyle(DetailDotStyle())
+                        ForEach(assessment.insights, id: \.self) { insight in
+                            Label {
+                                Text(LocalizedStringKey(insight.localizationKey))
+                            } icon: {
+                                Image(systemName: "circle.fill")
+                            }
+                            .font(.subheadline)
+                            .labelStyle(DetailDotStyle())
                         }
                     }
                 }
+
                 if !assessment.challengingWords.isEmpty {
                     VStack(alignment: .leading, spacing: 8) {
-                        Text("Möglicherweise schwierige Wörter")
+                        Text("assessment.challenging")
                             .font(.headline)
                         Text(assessment.challengingWords.joined(separator: " · "))
                             .font(.subheadline)
                             .foregroundStyle(.secondary)
-                        Text("Automatische Auswahl, nicht nach GER-Wortniveau geprüft.")
+                        Text("assessment.challengingCaption")
                             .font(.caption)
                             .foregroundStyle(.secondary)
                     }
                 }
+
                 Button {
                     UIPasteboard.general.string = copyText
                 } label: {
-                    Label("Ergebnis kopieren", systemImage: "doc.on.doc")
+                    Label("assessment.copy", systemImage: "doc.on.doc")
                 }
                 .buttonStyle(.bordered)
             } else {
@@ -75,7 +96,10 @@ struct AssessmentView: View {
                 Text(messageDetail)
                     .foregroundStyle(.secondary)
                     .font(.subheadline)
-                if assessment.wordCount > 0 { Divider(); stats }
+                if assessment.wordCount > 0 {
+                    Divider()
+                    stats
+                }
             }
         }
         .frame(maxWidth: .infinity, alignment: .leading)
@@ -86,42 +110,69 @@ struct AssessmentView: View {
 
     private var stats: some View {
         HStack(alignment: .top, spacing: 10) {
-            stat("Wörter", String(assessment.wordCount))
+            stat("stats.words", String(assessment.wordCount))
             Spacer(minLength: 0)
-            stat("Sätze", String(assessment.sentenceCount))
+            stat("stats.sentences", String(assessment.sentenceCount))
             Spacer(minLength: 0)
-            stat("Wörter pro Satz", assessment.averageSentenceLength.formatted(numberFormat))
+            stat("stats.wordsPerSentence", assessment.wordsPerSentence.formatted(numberFormat))
         }
     }
 
-    private func stat(_ title: String, _ value: String) -> some View {
+    private func stat(_ title: LocalizedStringKey, _ value: String) -> some View {
         VStack(alignment: .leading, spacing: 6) {
             Text(title).font(.caption).foregroundStyle(.secondary)
             Text(value).font(.title3.weight(.semibold)).monospacedDigit()
         }
     }
 
-    private var messageTitle: String {
+    private var messageTitle: LocalizedStringKey {
         switch assessment.state {
         case .ready: ""
-        case .empty: "Noch kein Text"
-        case .tooShort: "Der Text ist zu kurz"
-        case .notGerman: "Bitte deutschen Text eingeben"
+        case .empty: "state.empty.title"
+        case .tooShort: "state.tooShort.title"
+        case .notGerman: "state.notGerman.title"
         }
     }
 
-    private var messageDetail: String {
+    private var messageDetail: LocalizedStringKey {
         switch assessment.state {
         case .ready: ""
-        case .empty: "Füge einen Text ein, um seine Leseschwierigkeit einzuschätzen."
-        case .tooShort: "Für eine sinnvolle Einschätzung brauchen wir mindestens 50 Wörter in drei Sätzen. Einzelne Wörter wie „Hallo“ erhalten bewusst kein Niveau."
-        case .notGerman: "Die Sprache wurde nicht sicher als Deutsch erkannt. Prüfe den Text und versuche es erneut."
+        case .empty: "state.empty.detail"
+        case .tooShort: "state.tooShort.detail"
+        case .notGerman: "state.notGerman.detail"
         }
     }
 
     private var copyText: String {
-        guard let level = assessment.level else { return "" }
-        return "Textstufe: ungefähr \(level.rawValue)\nWörter: \(assessment.wordCount)\nSätze: \(assessment.sentenceCount)\nWörter pro Satz: \(assessment.averageSentenceLength.formatted(numberFormat))\nHinweis: Ungefähre, nicht offiziell geprüfte Leseschwierigkeit."
+        guard let level = assessment.level, let score = assessment.zixScore else { return "" }
+        return String(
+            format: String(localized: "copy.template"),
+            level.rawValue,
+            String(assessment.wordCount),
+            String(assessment.sentenceCount),
+            assessment.wordsPerSentence.formatted(numberFormat),
+            score.formatted(numberFormat)
+        )
+    }
+}
+
+private struct CEFRBands: View {
+    let level: CEFRLevel
+
+    var body: some View {
+        HStack(spacing: 3) {
+            ForEach(CEFRLevel.allCases, id: \.self) { candidate in
+                Text(candidate.rawValue)
+                    .font(.subheadline.weight(.semibold))
+                    .foregroundStyle(candidate == level ? Color.white : Color.primary)
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, 10)
+                    .background(candidate == level ? Theme.forest : Theme.canvas)
+                    .clipShape(RoundedRectangle(cornerRadius: 6))
+            }
+        }
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel(Text(verbatim: level.rawValue))
     }
 }
 

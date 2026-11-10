@@ -5,36 +5,36 @@ import NaturalLanguage
 /// Creates fresh tagger/tokenizer instances for every request (no cross-thread reuse).
 enum GermanTextAnalyzer {
     static func analyze(_ text: String) -> Assessment {
-        let trimmed = text.trimmingCharacters(in: .whitespacesAndNewlines)
-        guard !trimmed.isEmpty else {
+        let prepared = prepare(text)
+        guard !prepared.isEmpty else {
             return ReadingScorer.evaluate(TextFeatures(words: [], sentenceWordCounts: []))
         }
 
         let languageRecognizer = NLLanguageRecognizer()
-        languageRecognizer.processString(trimmed)
+        languageRecognizer.processString(prepared)
         let confidence = languageRecognizer.languageHypotheses(withMaximum: 3)[.german]
         let isGerman = languageRecognizer.dominantLanguage == .german
 
         let wordTokenizer = NLTokenizer(unit: .word)
-        wordTokenizer.string = trimmed
+        wordTokenizer.string = prepared
         wordTokenizer.setLanguage(.german)
-        let wordRanges = wordTokenizer.tokens(for: trimmed.startIndex..<trimmed.endIndex)
+        let wordRanges = wordTokenizer.tokens(for: prepared.startIndex..<prepared.endIndex)
             .filter { range in
-                trimmed[range].unicodeScalars.contains(where: { CharacterSet.letters.contains($0) })
+                prepared[range].unicodeScalars.contains(where: { CharacterSet.letters.contains($0) })
             }
 
         let tagger = NLTagger(tagSchemes: [.lemma])
-        tagger.string = trimmed
-        tagger.setLanguage(.german, range: trimmed.startIndex..<trimmed.endIndex)
+        tagger.string = prepared
+        tagger.setLanguage(.german, range: prepared.startIndex..<prepared.endIndex)
         let words: [WordObservation] = wordRanges.map { range in
             let lemma = tagger.tag(at: range.lowerBound, unit: .word, scheme: .lemma).0?.rawValue
-            return WordObservation(String(trimmed[range]), lemma: lemma)
+            return WordObservation(String(prepared[range]), lemma: lemma)
         }
 
         let sentenceTokenizer = NLTokenizer(unit: .sentence)
-        sentenceTokenizer.string = trimmed
+        sentenceTokenizer.string = prepared
         sentenceTokenizer.setLanguage(.german)
-        let sentenceRanges = sentenceTokenizer.tokens(for: trimmed.startIndex..<trimmed.endIndex)
+        let sentenceRanges = sentenceTokenizer.tokens(for: prepared.startIndex..<prepared.endIndex)
         let sentenceWordCounts: [Int] = sentenceRanges.map { sentence in
             wordRanges.filter { word in
                 word.lowerBound >= sentence.lowerBound && word.upperBound <= sentence.upperBound
@@ -47,5 +47,15 @@ enum GermanTextAnalyzer {
             germanConfidence: confidence,
             detectedLanguageIsGerman: isGerman
         ))
+    }
+
+    /// Collapses line breaks and repeated whitespace without inventing sentence boundaries.
+    static func prepare(_ text: String) -> String {
+        text
+            .split(whereSeparator: \.isNewline)
+            .map { $0.trimmingCharacters(in: .whitespaces) }
+            .filter { !$0.isEmpty }
+            .map { $0.replacingOccurrences(of: "\\s+", with: " ", options: .regularExpression) }
+            .joined(separator: " ")
     }
 }

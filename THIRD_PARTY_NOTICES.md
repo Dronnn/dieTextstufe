@@ -40,3 +40,12 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ```
+
+## spaCy German lemma data
+
+The bundled surface-form → lemma table is derived by running `de_core_news_sm` (and its vocabulary from `spacy-lookups-data`) over German word forms.
+
+- Projects: https://github.com/explosion/spaCy and https://github.com/explosion/spacy-lookups-data
+- License: MIT, © Explosion AI
+
+Only surface forms whose lemma exists in the ZIX reference data are kept. No model weights or full model files are redistributed.

@@ -1,0 +1,107 @@
+{
+  "identifier": "ABE913FA-BCB7-47F2-98E3-D5F9294A4F41",
+  "nonRenewingSubscriptions": [],
+  "products": [
+    {
+      "displayPrice": "2.99",
+      "familyShareable": false,
+      "internalID": "6CFC99AF-3857-4D87-87E8-67168D19B9B0",
+      "localizations": [
+        {
+          "description": "Optional tip. No features are unlocked.",
+          "displayName": "Small tip",
+          "locale": "en_US"
+        }
+      ],
+      "productID": "com.mrmaier.textstufe.tip.small",
+      "referenceName": "Small tip",
+      "type": "Consumable"
+    },
+    {
+      "displayPrice": "4.99",
+      "familyShareable": false,
+      "internalID": "1ED812A4-A0EA-421C-9486-9F1C8E5BD38C",
+      "localizations": [
+        {
+          "description": "Optional tip. No features are unlocked.",
+          "displayName": "Medium tip",
+          "locale": "en_US"
+        }
+      ],
+      "productID": "com.mrmaier.textstufe.tip.medium",
+      "referenceName": "Medium tip",
+      "type": "Consumable"
+    },
+    {
+      "displayPrice": "7.99",
+      "familyShareable": false,
+      "internalID": "4F7FC2A7-8FEE-408E-8935-2F2A9D1DA752",
+      "localizations": [
+        {
+          "description": "Optional tip. No features are unlocked.",
+          "displayName": "Large tip",
+          "locale": "en_US"
+        }
+      ],
+      "productID": "com.mrmaier.textstufe.tip.large",
+      "referenceName": "Large tip",
+      "type": "Consumable"
+    },
+    {
+      "displayPrice": "19.99",
+      "familyShareable": false,
+      "internalID": "16677C9E-0CC9-42C1-B722-4B77DC3E62B2",
+      "localizations": [
+        {
+          "description": "Optional tip. No features are unlocked.",
+          "displayName": "Generous tip",
+          "locale": "en_US"
+        }
+      ],
+      "productID": "com.mrmaier.textstufe.tip.generous",
+      "referenceName": "Generous tip",
+      "type": "Consumable"
+    },
+    {
+      "displayPrice": "49.99",
+      "familyShareable": false,
+      "internalID": "6418D77D-2E0C-4EC0-8821-8E4BBEE56B49",
+      "localizations": [
+        {
+          "description": "Optional tip. No features are unlocked.",
+          "displayName": "Patron tip",
+          "locale": "en_US"
+        }
+      ],
+      "productID": "com.mrmaier.textstufe.tip.patron",
+      "referenceName": "Patron tip",
+      "type": "Consumable"
+    },
+    {
+      "displayPrice": "99.99",
+      "familyShareable": false,
+      "internalID": "D9CA2C16-43A6-488E-8FE6-8D746B5AC737",
+      "localizations": [
+        {
+          "description": "Optional tip. No features are unlocked.",
+          "displayName": "Extraordinary tip",
+          "locale": "en_US"
+        }
+      ],
+      "productID": "com.mrmaier.textstufe.tip.extraordinary",
+      "referenceName": "Extraordinary tip",
+      "type": "Consumable"
+    }
+  ],
+  "settings": {
+    "_failTransactionsEnabled": false,
+    "_locale": "en_US",
+    "_storefront": "USA",
+    "_storeKitErrors": []
+  },
+  "subscriptionGroups": [],
+  "version": {
+    "major": 3,
+    "minor": 0
+  }
+}

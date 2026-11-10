@@ -6,7 +6,6 @@ struct TextstufeApp: App {
         WindowGroup {
             ContentView()
                 .tint(Theme.ink)
-                .environment(\.locale, Locale(identifier: "de_DE"))
         }
     }
 }
