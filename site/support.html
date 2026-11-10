@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Support — Textstufe</title>
+  <meta name="description" content="Textstufe support: scoring method, short-text limits, offline behaviour, donations and contact.">
+  <link rel="icon" href="assets/app-icon.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site">
+    <div class="wrap">
+      <a class="brand" href="index.html"><img src="assets/app-icon.png" alt="">Textstufe</a>
+      <nav class="site">
+        <a href="support.html">Support</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="https://github.com/Dronnn/dieTextstufe">GitHub</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page wrap">
+    <div class="eyebrow">Support</div>
+    <h1>Questions about Textstufe</h1>
+
+    <h2>Why does “Hallo” not get a level?</h2>
+    <p>A single word says almost nothing about the difficulty of a text. Textstufe requires at least 50 words in three sentences before it assigns a CEFR band. Shorter input receives an explanation instead of a misleading grade.</p>
+
+    <h2>How is the level calculated?</h2>
+    <p>Textstufe uses the published Zurich ZIX model: mean sentence length, long-word ratio, vocabulary coverage, and word frequency. The six features are standardized and passed through the published Ridge regression, then mapped to a rough CEFR band. The app adds a minimum length, German-language detection, and an uncertainty band.</p>
+    <p>This is a pragmatic reading indication, not an official CEFR test. It must not be used for grading, exams, admissions, or consequential decisions.</p>
+
+    <h2>What does the ZIX score mean?</h2>
+    <p>The score ranges from -10 to +10. Positive values indicate easier texts, negative values indicate harder texts. It is not a percentage and not a grade.</p>
+
+    <h2>Does the app need internet?</h2>
+    <p>No. Analysis runs entirely on the device. Only the optional donation screen asks the App Store for localized product prices.</p>
+
+    <h2>Which languages are supported?</h2>
+    <p>The analysed text must be German. The interface follows the device language and is available in English, German, French, Spanish, Italian, Polish, Russian, Ukrainian, Japanese, Simplified Chinese, Portuguese, and Turkish.</p>
+
+    <h2>Donations</h2>
+    <p>Tips are optional consumable purchases processed by Apple. They unlock nothing and can be repeated. Refunds are handled by Apple through <a href="https://reportaproblem.apple.com">Report a Problem</a>.</p>
+
+    <h2>Contact</h2>
+    <p>Report a problem or ask a question on <a href="https://github.com/Dronnn/dieTextstufe/issues">GitHub Issues</a>. Please include your iOS version, device model, and the app language.</p>
+  </main>
+
+  <footer class="site">
+    <div class="wrap">
+      <span>© 2026 Andrew Maier</span>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="https://github.com/Dronnn/dieTextstufe">GitHub</a>
+      </nav>
+    </div>
+  </footer>
+</body>
+</html>
