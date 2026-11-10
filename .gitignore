@@ -1,0 +1,18 @@
+.DS_Store
+.build/
+.swiftpm/
+*.xcuserstate
+xcuserdata/
+DerivedData/
+*.ipa
+*.dSYM/
+*.zip
+.tools/
+.venv/
+venv/
+__pycache__/
+*.pyc
+
+# Internal handoff material is not part of the public repository.
+Docs/
+NEXT_AGENT_PROMPT.md

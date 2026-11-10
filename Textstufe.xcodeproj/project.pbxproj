@@ -1,0 +1,380 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		990F8F1284349F35554359F8 /* TextstufeApp.swift in Sources */ = {
+			isa = PBXBuildFile;
+			fileRef = 9C4B9BB95CB78D92EC780406 /* TextstufeApp.swift */;
+		};
+		222B4679B0A63FB7F755E1B3 /* Theme.swift in Sources */ = {
+			isa = PBXBuildFile;
+			fileRef = E3DD6AFCD1A20B4E15FAE766 /* Theme.swift */;
+		};
+		83DACE4541ADDCD0C0EC066B /* SampleTexts.swift in Sources */ = {
+			isa = PBXBuildFile;
+			fileRef = 7C5BD33BA107B924D9780DED /* SampleTexts.swift */;
+		};
+		4EF881274498ED8FA5B370FE /* AssessmentModels.swift in Sources */ = {
+			isa = PBXBuildFile;
+			fileRef = 089E8347CBA469F2FFCE624A /* AssessmentModels.swift */;
+		};
+		EF90C44E85112A0FAA81329D /* GermanLexicon.swift in Sources */ = {
+			isa = PBXBuildFile;
+			fileRef = A2060DCF10D56D01DE30A65E /* GermanLexicon.swift */;
+		};
+		C3C529514B96DF0B1236FDF0 /* ReadingScorer.swift in Sources */ = {
+			isa = PBXBuildFile;
+			fileRef = 5D20840814A465EF324EEB3A /* ReadingScorer.swift */;
+		};
+		F5E5E60DCF0C618F519FDF4A /* GermanTextAnalyzer.swift in Sources */ = {
+			isa = PBXBuildFile;
+			fileRef = 0C7AF6D13F35FA98DE166465 /* GermanTextAnalyzer.swift */;
+		};
+		451EAF488E7AA7DB0E4FDE20 /* ContentView.swift in Sources */ = {
+			isa = PBXBuildFile;
+			fileRef = B92C360B96877DD5F85D91F1 /* ContentView.swift */;
+		};
+		BE1D4570C96ACA5D77239106 /* AssessmentView.swift in Sources */ = {
+			isa = PBXBuildFile;
+			fileRef = 033CE99D4109A24C0E8D256A /* AssessmentView.swift */;
+		};
+		4DA7DC97C7BF2139F10EC41F /* AboutView.swift in Sources */ = {
+			isa = PBXBuildFile;
+			fileRef = 92C06C878C94D613386E7F44 /* AboutView.swift */;
+		};
+		78B66FF0B66DC2AB70DB9E3E /* Assets.xcassets in Resources */ = {
+			isa = PBXBuildFile;
+			fileRef = 2C9C1A689E0156953F32010C /* Assets.xcassets */;
+		};
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		9C4B9BB95CB78D92EC780406 /* TextstufeApp.swift */ = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.swift;
+			path = TextstufeApp.swift;
+			sourceTree = "<group>";
+		};
+		E3DD6AFCD1A20B4E15FAE766 /* Theme.swift */ = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.swift;
+			path = Theme.swift;
+			sourceTree = "<group>";
+		};
+		7C5BD33BA107B924D9780DED /* SampleTexts.swift */ = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.swift;
+			path = SampleTexts.swift;
+			sourceTree = "<group>";
+		};
+		089E8347CBA469F2FFCE624A /* AssessmentModels.swift */ = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.swift;
+			path = AssessmentModels.swift;
+			sourceTree = "<group>";
+		};
+		A2060DCF10D56D01DE30A65E /* GermanLexicon.swift */ = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.swift;
+			path = GermanLexicon.swift;
+			sourceTree = "<group>";
+		};
+		5D20840814A465EF324EEB3A /* ReadingScorer.swift */ = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.swift;
+			path = ReadingScorer.swift;
+			sourceTree = "<group>";
+		};
+		0C7AF6D13F35FA98DE166465 /* GermanTextAnalyzer.swift */ = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.swift;
+			path = GermanTextAnalyzer.swift;
+			sourceTree = "<group>";
+		};
+		B92C360B96877DD5F85D91F1 /* ContentView.swift */ = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.swift;
+			path = ContentView.swift;
+			sourceTree = "<group>";
+		};
+		033CE99D4109A24C0E8D256A /* AssessmentView.swift */ = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.swift;
+			path = AssessmentView.swift;
+			sourceTree = "<group>";
+		};
+		92C06C878C94D613386E7F44 /* AboutView.swift */ = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.swift;
+			path = AboutView.swift;
+			sourceTree = "<group>";
+		};
+		2C9C1A689E0156953F32010C /* Assets.xcassets */ = {
+			isa = PBXFileReference;
+			lastKnownFileType = folder.assetcatalog;
+			path = Assets.xcassets;
+			sourceTree = "<group>";
+		};
+		6067D9564AE723E509EE87C5 /* Textstufe.app */ = {
+			isa = PBXFileReference;
+			explicitFileType = wrapper.application;
+			includeInIndex = 0;
+			path = Textstufe.app;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		0D23458BBBDDC5DF777FB80F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = ();
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		BFE0539EA15F9404C014FC1A /* App */ = {
+			isa = PBXGroup;
+			children = (
+				9C4B9BB95CB78D92EC780406 /* TextstufeApp.swift */,
+				E3DD6AFCD1A20B4E15FAE766 /* Theme.swift */,
+				7C5BD33BA107B924D9780DED /* SampleTexts.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		EFBF1225805B37DEE4C296F8 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				089E8347CBA469F2FFCE624A /* AssessmentModels.swift */,
+				A2060DCF10D56D01DE30A65E /* GermanLexicon.swift */,
+				5D20840814A465EF324EEB3A /* ReadingScorer.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		3AF4707B7978B38667D37263 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				0C7AF6D13F35FA98DE166465 /* GermanTextAnalyzer.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		E71BA6E82D6BE46176E3E747 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B92C360B96877DD5F85D91F1 /* ContentView.swift */,
+				033CE99D4109A24C0E8D256A /* AssessmentView.swift */,
+				92C06C878C94D613386E7F44 /* AboutView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		CBC9F9E177DFA8E00F1AC5DF /* Textstufe */ = {
+			isa = PBXGroup;
+			children = (
+				BFE0539EA15F9404C014FC1A /* App */,
+				EFBF1225805B37DEE4C296F8 /* Core */,
+				3AF4707B7978B38667D37263 /* Services */,
+				E71BA6E82D6BE46176E3E747 /* Views */,
+				2C9C1A689E0156953F32010C /* Assets.xcassets */,
+			);
+			path = Textstufe;
+			sourceTree = "<group>";
+		};
+		C3E32D27BBA9EBBEB418C35E /* Products */ = {
+			isa = PBXGroup;
+			children = (6067D9564AE723E509EE87C5 /* Textstufe.app */,);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		96B4A92792011A0C822A8E2F /* Project */ = {
+			isa = PBXGroup;
+			children = (
+				CBC9F9E177DFA8E00F1AC5DF /* Textstufe */,
+				C3E32D27BBA9EBBEB418C35E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C190B9D47931305F7DEB2048 /* Textstufe */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A21EAB682C210A41EE720057 /* Build configuration list for PBXNativeTarget Textstufe */;
+			buildPhases = (
+				1B381E88D0DD12ED59C4DC1B /* Sources */,
+				0D23458BBBDDC5DF777FB80F /* Frameworks */,
+				8AD3BEBB9A163C285C0AC835 /* Resources */,
+			);
+			buildRules = ();
+			dependencies = ();
+			name = Textstufe;
+			productName = Textstufe;
+			productReference = 6067D9564AE723E509EE87C5 /* Textstufe.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		DF6C5258D72F100FA4EAA335 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastUpgradeCheck = 1600;
+				TargetAttributes = {C190B9D47931305F7DEB2048 = {CreatedOnToolsVersion = 16.0; }; };
+			};
+			buildConfigurationList = 75F4208181DA19FC7F549CC6 /* Build configuration list for PBXProject */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = de;
+			hasScannedForEncodings = 0;
+			knownRegions = (de, en, Base);
+			mainGroup = 96B4A92792011A0C822A8E2F /* Project */;
+			productRefGroup = C3E32D27BBA9EBBEB418C35E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (C190B9D47931305F7DEB2048 /* Textstufe */,);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8AD3BEBB9A163C285C0AC835 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				78B66FF0B66DC2AB70DB9E3E /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1B381E88D0DD12ED59C4DC1B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				990F8F1284349F35554359F8 /* TextstufeApp.swift in Sources */,
+				222B4679B0A63FB7F755E1B3 /* Theme.swift in Sources */,
+				83DACE4541ADDCD0C0EC066B /* SampleTexts.swift in Sources */,
+				4EF881274498ED8FA5B370FE /* AssessmentModels.swift in Sources */,
+				EF90C44E85112A0FAA81329D /* GermanLexicon.swift in Sources */,
+				C3C529514B96DF0B1236FDF0 /* ReadingScorer.swift in Sources */,
+				F5E5E60DCF0C618F519FDF4A /* GermanTextAnalyzer.swift in Sources */,
+				451EAF488E7AA7DB0E4FDE20 /* ContentView.swift in Sources */,
+				BE1D4570C96ACA5D77239106 /* AssessmentView.swift in Sources */,
+				4DA7DC97C7BF2139F10EC41F /* AboutView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		2B95B6076B49CA880BD9A54C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+			};
+			name = Debug;
+		};
+		DCD3A2468FF3B8919DF52FB3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		BF1B469993FD4A3A481D7956 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Textstufe;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 0.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.textstufe;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		04E1FAD53F276B6B74A03731 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Textstufe;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 0.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.textstufe;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		75F4208181DA19FC7F549CC6 /* Build configuration list */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2B95B6076B49CA880BD9A54C /* Debug */,
+				DCD3A2468FF3B8919DF52FB3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A21EAB682C210A41EE720057 /* Build configuration list */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BF1B469993FD4A3A481D7956 /* Debug */,
+				04E1FAD53F276B6B74A03731 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = DF6C5258D72F100FA4EAA335 /* Project object */;
+}
