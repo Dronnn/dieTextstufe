@@ -5,6 +5,7 @@ struct ContentView: View {
     @State private var assessment: Assessment?
     @State private var isAnalyzing = false
     @State private var activeSheet: Sheet?
+    @State private var marketingShot = false
     @FocusState private var inputFocused: Bool
 
     private let maxCharacters = 20_000
@@ -17,18 +18,26 @@ struct ContentView: View {
 
     var body: some View {
         NavigationStack {
+            ScrollViewReader { proxy in
             ScrollView {
                 VStack(alignment: .leading, spacing: 26) {
-                    header
-                    editor
-                    analyzeButton
+                    if !marketingShot {
+                        header
+                        editor
+                        analyzeButton
+                    }
                     if let assessment {
                         AssessmentView(assessment: assessment)
-                    } else {
+                            .id("result")
+                    } else if !marketingShot {
                         emptyState
                     }
-                    explanation
-                    supportButton
+                    if !marketingShot {
+                        explanation
+                        supportButton
+                    } else {
+                        explanation
+                    }
                 }
                 .frame(maxWidth: 720, alignment: .leading)
                 .padding(.horizontal, 20)
@@ -37,6 +46,16 @@ struct ContentView: View {
                 .frame(maxWidth: .infinity)
             }
             .scrollDismissesKeyboard(.interactively)
+            #if DEBUG
+            .onChange(of: assessment) { _, newValue in
+                guard newValue != nil, let demo = ProcessInfo.processInfo.environment["TEXTSTUFE_DEMO"] else { return }
+                let anchor: UnitPoint = demo == "detail-bottom" ? .bottom : .top
+                Task { @MainActor in
+                    try? await Task.sleep(for: .milliseconds(350))
+                    proxy.scrollTo("result", anchor: anchor)
+                }
+            }
+            #endif
             .background(Theme.canvas)
             .toolbar(.hidden, for: .navigationBar)
             .sheet(item: $activeSheet) { sheet in
@@ -47,8 +66,31 @@ struct ContentView: View {
                     SupportView()
                 }
             }
+            #if DEBUG
+            .onAppear(perform: handleDemoArguments)
+            #endif
+            }
         }
     }
+
+    #if DEBUG
+    private func handleDemoArguments() {
+        switch ProcessInfo.processInfo.environment["TEXTSTUFE_DEMO"] {
+        case "detail", "detail-bottom", "marketing":
+            input = SampleTexts.german
+            marketingShot = true
+            analyze()
+        case "compose":
+            input = SampleTexts.german
+        case "support":
+            activeSheet = .support
+        case "about":
+            activeSheet = .about
+        default:
+            break
+        }
+    }
+    #endif
 
     private var header: some View {
         VStack(alignment: .leading, spacing: 18) {

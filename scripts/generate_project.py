@@ -150,10 +150,13 @@ for scope in ['project','target']:
 \t\t\tGENERATE_INFOPLIST_FILE = YES;
 \t\t\tINFOPLIST_KEY_CFBundleDisplayName = Textstufe;
 \t\t\tINFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
+\t\t\tINFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
+\t\t\tINFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+\t\t\tINFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 \t\t\tINFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 \t\t\tINFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 \t\t\tIPHONEOS_DEPLOYMENT_TARGET = 17.0;
-\t\t\tMARKETING_VERSION = 0.1.0;
+\t\t\tMARKETING_VERSION = 1.0;
 \t\t\tPRODUCT_BUNDLE_IDENTIFIER = com.mrmaier.textstufe;
 \t\t\tPRODUCT_NAME = "$(TARGET_NAME)";
 \t\t\tSUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

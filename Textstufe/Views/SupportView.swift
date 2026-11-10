@@ -57,6 +57,14 @@ struct SupportView: View {
         }
     }
 
+    private var isDemoScreenshot: Bool {
+        #if DEBUG
+        ProcessInfo.processInfo.environment["TEXTSTUFE_DEMO"] == "support"
+        #else
+        false
+        #endif
+    }
+
     private var donationContent: some View {
         VStack(alignment: .leading, spacing: 18) {
             Text("donations.headline")
@@ -94,7 +102,7 @@ struct SupportView: View {
                         .font(.footnote)
                         .foregroundStyle(.secondary)
                 }
-            } else if let errorMessage = store.errorMessage, store.products.isEmpty {
+            } else if let errorMessage = store.errorMessage, store.products.isEmpty, !isDemoScreenshot {
                 VStack(alignment: .leading, spacing: 8) {
                     Text(errorMessage)
                         .font(.footnote)
